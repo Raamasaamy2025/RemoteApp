@@ -15,7 +15,35 @@ jobs:
 
       - name: Checkout source repository
         uses: actions/checkout@v3
+
+
+      - name: Set up Git config
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Clone destination repository
+        run: |
+          git clone https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy/TestPipe.git destination-repo
+
+      - name: Copy specific files to destination repo
+        run: |
+          #Remove the folder, if alreay exists.
+          if [ -d destination-repo/assets ]; then
+            rm -rf destination-repo/assets
+            echo "Directory removed."
+          else
+            echo "Directory does not exist."
+          fi
           
+          cp -r ./assets destination-repo/
+          # cp ./assets/entitlements/* destination-repo/assets/entitlements/
+          
+          cd destination-repo
+          git add .
+          git commit -m "Copied specific files from source repo"
+          git push origin main
+
       - name: Trigger Workflow in TestPipe Repository
         run: |
           REPO_OWNER="Raamasaamy2025"
