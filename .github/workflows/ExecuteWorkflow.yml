@@ -1,0 +1,41 @@
+name: Trigger Workflow in Other Repo
+
+# on:
+  # push:
+    # branches:
+      # - main  # Trigger on pushes to main branch
+
+on:
+  workflow_dispatch: # Allows you to trigger the workflow manually
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout source repository
+        uses: actions/checkout@v3
+          
+      - name: Trigger Workflow in TestPipe Repository
+        run: |
+          REPO_OWNER="Raamasaamy2025"
+          REPO_NAME="TestPipe"
+          WORKFLOW_ID="CodeSign.yml"  # Filename of workflow in repo B
+          GITHUB_TOKEN="${{ secrets.TARGET_REPO_PAT }}"  # This repository secret
+
+          curl -X POST \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -d '{
+              "ref": "main",
+              "inputs": {
+                "ipa_path": "'"./assets/Remote.ipa"'",
+                "certificate_name": "'"iPhone Distribution: Robert Bosch GmbH (JRH3BDU5ZX)"'",
+                "main_new_bundle_id": "'"com.bosch.prod.remotefiresafety"'",
+                "main_entitlements_plist_path": "'"./assets/entitlements/entitlements.plist"'",
+                "output_ipa_path": "'"./output"'",
+                "extension_entitlements_plist_dir": "'"./assets/entitlements/extensions"'",
+                "extension_provisioning_profile_dir": "'""'"
+              }
+            }' \
+            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/workflows/$WORKFLOW_ID/dispatches"
