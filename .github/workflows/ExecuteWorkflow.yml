@@ -32,6 +32,7 @@ jobs:
           if [ -d destination-repo/assets ]; then
             rm -rf destination-repo/assets
             echo "Directory removed."
+            cd destination-repo
             git add .
             git commit -m "Files removed from base repo"
             git push origin main
