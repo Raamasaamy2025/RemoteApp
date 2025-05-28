@@ -34,6 +34,7 @@ jobs:
             echo "Directory removed."
             git add .
             git commit -m "Files removed from base repo"
+            git push origin main
           else
             echo "Directory does not exist."
           fi
