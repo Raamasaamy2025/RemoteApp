@@ -24,7 +24,7 @@ jobs:
 
       - name: Clone destination repository
         run: |
-          git clone https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy/TestPipe.git destination-repo
+          git clone https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo
 
       - name: Copy specific files to destination repo
         run: |
