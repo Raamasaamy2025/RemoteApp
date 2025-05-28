@@ -3,26 +3,18 @@
 <plist version="1.0">
 <dict>
 	<key>application-identifier</key>
-	<string>JRH3BDU5ZX.com.bosch.prod.remotefiresafety</string>
+	<string>KR97TMX6TT.com.bosch.rbllc2test</string>
 	<key>aps-environment</key>
 	<string>production</string>
 	<key>beta-reports-active</key>
-	<true/>
-	<key>com.apple.developer.usernotifications.critical-alerts</key>
-	<true/>
-	<key>com.apple.developer.usernotifications.time-sensitive</key>
 	<true/>
 	<key>com.apple.developer.team-identifier</key>
 	<string>JRH3BDU5ZX</string>
 	<key>get-task-allow</key>
 	<false/>
-	<key>com.apple.security.application-groups</key>
-	<array>
-		<string>group.com.bosch.prod.remotefiresafety</string>
-	</array>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>JRH3BDU5ZX.*</string>
+		<string>KR97TMX6TT.*</string>
 		<string>com.apple.token</string>
 	</array>
 </dict>
