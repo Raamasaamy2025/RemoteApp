@@ -58,8 +58,8 @@ jobs:
               "ref": "main",
               "inputs": {
                 "ipa_path": "'"./assets/Remote.ipa"'",
-                "certificate_name": "'"iPhone Distribution: Robert Bosch GmbH (JRH3BDU5ZX)"'",
-                "main_new_bundle_id": "'"com.bosch.prod.remotefiresafety"'",
+                "certificate_name": "'"iPhone Distribution: Robert Bosch LLC. (KR97TMX6TT)"'",
+                "main_new_bundle_id": "'"com.bosch.rbllc2test"'",
                 "main_entitlements_plist_path": "'"./assets/entitlements/entitlements.plist"'",
                 "output_ipa_path": "'"./output"'",
                 "extension_entitlements_plist_dir": "'"./assets/entitlements/extensions"'",
