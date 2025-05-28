@@ -31,11 +31,11 @@ jobs:
           #Remove the folder, if alreay exists.
           if [ -d destination-repo/assets ]; then
             rm -rf destination-repo/assets
-            echo "Directory removed."
             cd destination-repo
             git add .
             git commit -m "Files removed from base repo"
             git push origin main
+            echo "Directory removed."
           else
             echo "Directory does not exist."
           fi
