@@ -27,7 +27,7 @@ jobs:
           repository: Raamasaamy/TestPipe.git  # Replace with your destination repo
           token: ${{ secrets.GITHUB_TOKEN }}
           path: destination
-          ref: main
+          ref: RemoteApp
           
       # ***********************
 
@@ -89,7 +89,7 @@ jobs:
           cd destination-repo
           git add .
           git commit -m "Copied specific files from source repo"
-          git push origin main
+          git push origin RemoteApp
 
       - name: Trigger Workflow in TestPipe Repository
         run: |
