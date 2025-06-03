@@ -21,52 +21,22 @@ jobs:
           path: source-repo
           ref: main
           
-      - name: Checkout Destination Repository
-        uses: actions/checkout@v3
-        with:
-          repository: Raamasaamy2025/TestPipe  # Replace with your destination repo
-          token: ${{ secrets.GITHUB_TOKEN }}
-          path: destination-repo
-          ref: RemoteApp
-          
-      # ***********************
-
-      # - name: Checkout Source Repository
-      #   uses: actions/checkout@v2
-      #   with:
-      #     repository: username/source-repo  # Replace with your source repo
-      #     token: ${{ secrets.GITHUB_TOKEN }}
-      #     path: source-repo
-
       # - name: Checkout Destination Repository
-      #   uses: actions/checkout@v2
+      #   uses: actions/checkout@v3
       #   with:
-      #     repository: username/destination-repo  # Replace with your destination repo
+      #     repository: Raamasaamy2025/TestPipe  # Replace with your destination repo
       #     token: ${{ secrets.GITHUB_TOKEN }}
       #     path: destination-repo
-
-      # - name: Copy Files
-      #   run: |
-      #     cp -r source/path/to/files/* destination/path/to/destination/
-
-      # - name: Commit and Push Changes
-      #   run: |
-      #     cd destination
-      #     git config --local user.email "you@example.com"  # Replace with your email
-      #     git config --local user.name "Your Name"  # Replace with your name
-      #     git add .
-      #     git commit -m "Copy files from source repository"
-      #     git push origin main  # Change this to your default branch
+      #     ref: RemoteApp
           
-      # ***********************
       - name: Set up Git config
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
 
-      # - name: Clone destination repository
-      #   run: |
-      #     git clone https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo
+      - name: Clone destination repository
+        run: |
+          git clone --branch RemoteApp https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo
 
       - name: Copy specific files to destination repo
         run: |
