@@ -44,9 +44,9 @@ jobs:
           if [ -d destination-repo/assets ]; then
             # cd destination-repo
             rm -rf destination-repo/assets
-            # git add .
-            # git commit -m "Files removed from base repo"
-            # git push origin main
+            git add .
+            git commit -a -m "Files removed from base repo"
+            git push origin main
             echo "Directory removed."
           else
             echo "Directory does not exist."
@@ -59,7 +59,7 @@ jobs:
           
           cd destination-repo
           git add .
-          git commit -m "Copied specific files from source repo"
+          git commit -a -m "Copied specific files from source repo"
           git push origin RemoteApp
 
       - name: Trigger Workflow in TestPipe Repository
