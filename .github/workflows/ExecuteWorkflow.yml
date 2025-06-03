@@ -59,7 +59,11 @@ jobs:
           
           cd destination-repo
           git add .
-          git commit -m "Copied specific files from source repo"
+          if ! git diff --cached --quiet; then
+            git commit -m "Copied specific files from source repo"
+          else
+            echo "No changes to commit"
+          fi
           git push origin RemoteApp
 
       - name: Trigger Workflow in TestPipe Repository
