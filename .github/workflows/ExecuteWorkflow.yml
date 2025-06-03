@@ -45,7 +45,11 @@ jobs:
             cd destination-repo
             rm -rf destination-repo/assets
             git add .
-            git commit -m "Files removed from base repo"
+            if ! git diff --cached --quiet; then
+              git commit -m "Files removed from base repo"
+            else
+              echo "No changes to commit"
+            fi
             git push origin RemoteApp
             echo "Directory removed."
           else
