@@ -15,33 +15,74 @@ jobs:
 
       - name: Checkout source repository
         uses: actions/checkout@v3
+        with:
+          repository: Raamasaamy2025/RemoteApp.git  # Replace with your source repo
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: source
 
+      - name: Checkout Destination Repository
+        uses: actions/checkout@v3
+        with:
+          repository: Raamasaamy/TestPipe.git  # Replace with your destination repo
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: destination
 
+          
+      # ***********************
+
+      # - name: Checkout Source Repository
+      #   uses: actions/checkout@v2
+      #   with:
+      #     repository: username/source-repo  # Replace with your source repo
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     path: source-repo
+
+      # - name: Checkout Destination Repository
+      #   uses: actions/checkout@v2
+      #   with:
+      #     repository: username/destination-repo  # Replace with your destination repo
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     path: destination-repo
+
+      # - name: Copy Files
+      #   run: |
+      #     cp -r source/path/to/files/* destination/path/to/destination/
+
+      # - name: Commit and Push Changes
+      #   run: |
+      #     cd destination
+      #     git config --local user.email "you@example.com"  # Replace with your email
+      #     git config --local user.name "Your Name"  # Replace with your name
+      #     git add .
+      #     git commit -m "Copy files from source repository"
+      #     git push origin main  # Change this to your default branch
+          
+      # ***********************
       - name: Set up Git config
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Clone destination repository
-        run: |
-          git clone https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo
+      # - name: Clone destination repository
+      #   run: |
+      #     git clone https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo
 
       - name: Copy specific files to destination repo
         run: |
           #Remove the folder, if alreay exists.
           if [ -d destination-repo/assets ]; then
-            rm -rf destination-repo/assets
             cd destination-repo
-            git add .
-            git commit -m "Files removed from base repo"
-            git push origin main
+            rm -rf destination-repo/assets
+            # git add .
+            # git commit -m "Files removed from base repo"
+            # git push origin main
             echo "Directory removed."
           else
             echo "Directory does not exist."
           fi
 
           # Copying files to Target Repo
-          cp -r ./assets destination-repo/
+          cp -r source-repo/assets destination-repo/
           # cp ./assets/entitlements/* destination-repo/assets/entitlements/
           
           cd destination-repo
