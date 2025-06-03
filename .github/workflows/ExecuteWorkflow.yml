@@ -42,7 +42,7 @@ jobs:
         run: |
           #Remove the folder, if alreay exists.
           if [ -d destination-repo/assets ]; then
-            cd destination-repo
+            # cd destination-repo
             rm -rf destination-repo/assets
             # git add .
             # git commit -m "Files removed from base repo"
@@ -53,7 +53,7 @@ jobs:
           fi
 
           # Copying files to Target Repo
-          cd source-repo
+          # cd source-repo
           cp -r source-repo/assets destination-repo/
           # cp ./assets/entitlements/* destination-repo/assets/entitlements/
           
