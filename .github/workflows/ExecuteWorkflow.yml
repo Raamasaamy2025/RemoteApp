@@ -16,7 +16,7 @@ jobs:
       - name: Checkout source repository
         uses: actions/checkout@v3
         with:
-          repository: Raamasaamy2025/RemoteApp.git  # Replace with your source repo
+          repository: Raamasaamy2025/RemoteApp  # Replace with your source repo
           token: ${{ secrets.GITHUB_TOKEN }}
           path: source
           ref: main
@@ -24,7 +24,7 @@ jobs:
       - name: Checkout Destination Repository
         uses: actions/checkout@v3
         with:
-          repository: Raamasaamy2025/TestPipe.git  # Replace with your destination repo
+          repository: Raamasaamy2025/TestPipe  # Replace with your destination repo
           token: ${{ secrets.GITHUB_TOKEN }}
           path: destination
           ref: RemoteApp
