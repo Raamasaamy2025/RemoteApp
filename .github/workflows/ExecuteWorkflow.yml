@@ -53,6 +53,7 @@ jobs:
           fi
 
           # Copying files to Target Repo
+          cd source-repo
           cp -r source-repo/assets destination-repo/
           # cp ./assets/entitlements/* destination-repo/assets/entitlements/
           
