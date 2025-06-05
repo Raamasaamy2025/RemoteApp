@@ -42,7 +42,7 @@ jobs:
         run: |
           #Remove the folder, if alreay exists.
           if [ -d destination-repo/assets ]; then
-            # cd destination-repo
+            cd destination-repo
             rm -rf destination-repo/assets
             git add .
             if ! git diff --cached --quiet; then
@@ -52,6 +52,7 @@ jobs:
             fi
             git push origin RemoteApp
             echo "Directory removed."
+            
           else
             echo "Directory does not exist."
           fi
