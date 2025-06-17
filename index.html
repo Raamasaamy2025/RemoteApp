@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main App Entitlement</title>
+</head>
+<body>
+    <h1>XML Content</h1>
+    <div id="xmlContent"></div>
+
+    <script>
+        fetch('./assets/entitlements/entitlements.plist')
+            .then(response => response.text())
+            .then(data => {
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(data, "text/xml");
+                const content = xmlDoc.getElementsByTagName("dict"); // Replace with your XML element name
+                let output = '';
+                for (let i = 0; i < content.length; i++) {
+                    output += `<p>${content[i].textContent}</p>`;
+                }
+                document.getElementById('xmlContent').innerHTML = output;
+            })
+            .catch(error => console.error('Error fetching XML:', error));
+    </script>
+</body>
+</html>
