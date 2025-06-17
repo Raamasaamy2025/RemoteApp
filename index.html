@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>Main App Entitlements.plist Content</h1>
+        <h1>Entitlements.plist Content</h1>
         <table>
             <thead>
                 <tr>
@@ -30,13 +30,47 @@
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(data, "text/xml");
                 const keys = xmlDoc.getElementsByTagName("key");
-                const values = xmlDoc.getElementsByTagName("string"); // Adjust if you have different types
+                const arrays = xmlDoc.getElementsByTagName("array");
+                const values = xmlDoc.getElementsByTagName("string");
+                const booleans = xmlDoc.getElementsByTagName("true");
+                const falseValues = xmlDoc.getElementsByTagName("false");
 
                 let output = '';
                 for (let i = 0; i < keys.length; i++) {
+                    let valueContent = '';
+
+                    // Check if the value is an array
+                    if (arrays[i]) {
+                        const items = arrays[i].getElementsByTagName("string");
+                        const booleanItems = arrays[i].getElementsByTagName("true");
+                        const falseItems = arrays[i].getElementsByTagName("false");
+
+                        // Collect array items
+                        const arrayValues = [];
+                        for (let j = 0; j < items.length; j++) {
+                            arrayValues.push(items[j].textContent);
+                        }
+                        for (let j = 0; j < booleanItems.length; j++) {
+                            arrayValues.push('true');
+                        }
+                        for (let j = 0; j < falseItems.length; j++) {
+                            arrayValues.push('false');
+                        }
+
+                        valueContent = arrayValues.join(', '); // Join array items into a string
+                    } else if (values[i]) {
+                        valueContent = values[i].textContent;
+                    } else if (booleans[i]) {
+                        valueContent = 'true';
+                    } else if (falseValues[i]) {
+                        valueContent = 'false';
+                    } else {
+                        valueContent = 'N/A';
+                    }
+
                     output += `<tr>
                         <td>${keys[i].textContent}</td>
-                        <td>${values[i] ? values[i].textContent : 'N/A'}</td>
+                        <td>${valueContent}</td>
                     </tr>`;
                 }
                 document.getElementById('plistContent').innerHTML = output;
