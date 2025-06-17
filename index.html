@@ -39,8 +39,13 @@
                 for (let i = 0; i < keys.length; i++) {
                     let valueContent = '';
                     
-                    // Check if the value is an array
-                    if (arrays[i]) {
+                    if (values[i]) {
+                        valueContent = values[i].textContent;
+                    } else if (booleans[i]) {
+                        valueContent = 'true';
+                    } else if (falseValues[i]) {
+                        valueContent = 'false';
+                    } else if (arrays[i]) {  // Check if the value is an array
                         const items = arrays[i].getElementsByTagName("string");
 
                         // Collect array items
@@ -50,14 +55,6 @@
                         }
 
                         valueContent = arrayValues.join(', '); // Join array items into a string
-                    } else if (values[i]) {
-                        valueContent = values[i].textContent;
-                    } else if (booleans[i]) {
-                        valueContent = 'true';
-                    } else if (falseValues[i]) {
-                        valueContent = 'false';
-                    } else {
-                        valueContent = 'N/A';
                     }
 
                     output += `<tr>
