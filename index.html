@@ -38,18 +38,22 @@
                 let output = '';
                 for (let i = 0; i < keys.length; i++) {
                     let valueContent = '';
-                    
-                    document.getElementById('plistContent').innerHTML = booleans[i].textContent;
-                    document.getElementById('plistContent').innerHTML = falseValues[i].textContent;
+
+                    const booleanKey = keys[i].textContent;
+                    const booleanValue = xmlDoc.getElementsByTagName(booleanKey);
+                    // document.getElementById('plistContent').innerHTML = booleans[i];
+                    // document.getElementById('plistContent').innerHTML = falseValues[i];
                     
                     // document.getElementById('plistContent').innerHTML = arrays[i];
                     
                     if (values[i]) {
                         valueContent = values[i].textContent;
-                    } else if (booleans[i]) {
+                    } else if (booleanValue.length > 0 && booleanValue[0].nodeName === "true") {
                         valueContent = 'true';
-                    } else if (falseValues[i]) {
+                    } else if (booleanValue.length > 0 && booleanValue[0].nodeName === "false") {
                         valueContent = 'false';
+
+                        
                     } else if (arrays[i]) {  // Check if the value is an array
                         const items = arrays[i].getElementsByTagName("string");
 
@@ -68,7 +72,7 @@
                     </tr>`;
                     
                 }
-                // document.getElementById('plistContent').innerHTML = output;
+                document.getElementById('plistContent').innerHTML = output;
             })
             .catch(error => console.error('Error fetching PLIST:', error));
     </script>
