@@ -3,26 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main App Entitlement</title>
+    <title>Display Entitlements.plist Content</title>
 </head>
 <body>
-    <h1>XML Content</h1>
-    <div id="xmlContent"></div>
+    <h1>Entitlements.plist Content</h1>
+    <div id="plistContent"></div>
 
     <script>
-        fetch('./assets/entitlements/entitlements.plist')
+        fetch('entitlements.plist')
             .then(response => response.text())
             .then(data => {
                 const parser = new DOMParser();
                 const xmlDoc = parser.parseFromString(data, "text/xml");
-                const content = xmlDoc.getElementsByTagName("dict"); // Replace with your XML element name
+                const keys = xmlDoc.getElementsByTagName("key");
+                const values = xmlDoc.getElementsByTagName("string"); // Adjust if you have different types
+
                 let output = '';
-                for (let i = 0; i < content.length; i++) {
-                    output += `<p>${content[i].textContent}</p>`;
+                for (let i = 0; i < keys.length; i++) {
+                    output += `<p><strong>${keys[i].textContent}:</strong> ${values[i] ? values[i].textContent : 'N/A'}</p>`;
                 }
-                document.getElementById('xmlContent').innerHTML = output;
+                document.getElementById('plistContent').innerHTML = output;
             })
-            .catch(error => console.error('Error fetching XML:', error));
+            .catch(error => console.error('Error fetching PLIST:', error));
     </script>
 </body>
 </html>
