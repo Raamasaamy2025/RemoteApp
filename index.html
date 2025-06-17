@@ -1,13 +1,27 @@
+<!-- ./assets/entitlements/entitlements.plist -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Entitlements.plist Content</title>
+    <title>Entitlements.plist Content</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file -->
 </head>
 <body>
-    <h1>Main App Entitlements.plist Content</h1>
-    <div id="plistContent"></div>
+    <div class="container">
+        <h1>Entitlements.plist Content</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody id="plistContent">
+                <!-- Content will be populated by JavaScript -->
+            </tbody>
+        </table>
+    </div>
 
     <script>
         fetch('./assets/entitlements/entitlements.plist')
@@ -20,7 +34,10 @@
 
                 let output = '';
                 for (let i = 0; i < keys.length; i++) {
-                    output += `<p><strong>${keys[i].textContent}:</strong> ${values[i] ? values[i].textContent : 'N/A'}</p>`;
+                    output += `<tr>
+                        <td>${keys[i].textContent}</td>
+                        <td>${values[i] ? values[i].textContent : 'N/A'}</td>
+                    </tr>`;
                 }
                 document.getElementById('plistContent').innerHTML = output;
             })
