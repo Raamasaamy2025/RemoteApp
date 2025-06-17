@@ -42,19 +42,11 @@
                     // Check if the value is an array
                     if (arrays[i]) {
                         const items = arrays[i].getElementsByTagName("string");
-                        const booleanItems = arrays[i].getElementsByTagName("true");
-                        const falseItems = arrays[i].getElementsByTagName("false");
 
                         // Collect array items
                         const arrayValues = [];
                         for (let j = 0; j < items.length; j++) {
                             arrayValues.push(items[j].textContent);
-                        }
-                        for (let j = 0; j < booleanItems.length; j++) {
-                            arrayValues.push('true');
-                        }
-                        for (let j = 0; j < falseItems.length; j++) {
-                            arrayValues.push('false');
                         }
 
                         valueContent = arrayValues.join(', '); // Join array items into a string
