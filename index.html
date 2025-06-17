@@ -38,9 +38,9 @@
                 let output = '';
                 for (let i = 0; i < keys.length; i++) {
                     let valueContent = '';
-                    document.getElementById('plistContent').innerHTML = booleans;
-                    document.getElementById('plistContent').innerHTML = falseValues;
-                    document.getElementById('plistContent').innerHTML = arrays;
+                    document.getElementById('plistContent').innerHTML = booleans[i];
+                    document.getElementById('plistContent').innerHTML = falseValues[i];
+                    document.getElementById('plistContent').innerHTML = arrays[i];
                     
                     if (values[i]) {
                         valueContent = values[i].textContent;
