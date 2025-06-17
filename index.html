@@ -10,7 +10,7 @@
     <div id="plistContent"></div>
 
     <script>
-        fetch('entitlements.plist')
+        fetch('./assets/entitlements/entitlements.plist')
             .then(response => response.text())
             .then(data => {
                 const parser = new DOMParser();
