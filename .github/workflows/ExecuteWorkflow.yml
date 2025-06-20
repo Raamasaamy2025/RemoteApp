@@ -84,17 +84,17 @@ jobs:
           REPO_OWNER="Raamasaamy2025"
           REPO_NAME="TestPipe"
           WORKFLOW_ID="CodeSign.yml"  # Filename of workflow in repo B
-          WORKFLOW_PP_ID="Get_ProvProfile.yml"  # Filename of workflow in repo B
+          # WORKFLOW_PP_ID="Get_ProvProfile.yml"  # Filename of workflow in repo B
           GITHUB_TOKEN="${{ secrets.TARGET_REPO_PAT }}"  # This repository secret
 
-          curl -X POST \
-            -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: token $GITHUB_TOKEN" \
-            -d '{
-              "ref": "main"
-            }' \
-            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/workflows/$WORKFLOW_PP_ID/dispatches"
-            sleep 20
+          # curl -X POST \
+          #   -H "Accept: application/vnd.github.v3+json" \
+          #   -H "Authorization: token $GITHUB_TOKEN" \
+          #   -d '{
+          #     "ref": "main"
+          #   }' \
+          #   "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/workflows/$WORKFLOW_PP_ID/dispatches"
+          #   sleep 20
             
           curl -X POST \
             -H "Accept: application/vnd.github.v3+json" \
