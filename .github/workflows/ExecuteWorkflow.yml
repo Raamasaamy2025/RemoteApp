@@ -109,7 +109,7 @@ jobs:
                 "output_ipa_path": "'"./output"'",
                 "extension_entitlements_plist_dir": "'"./assets/entitlements/extensions"'",
                 "extension_provisioning_profile_dir": "'""'",
-                "app_repo_name": "'"RemoteApp"'",
+                "app_repo_name": "'"RemoteApp"'"
               }
             }' \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/workflows/$WORKFLOW_ID/dispatches"
