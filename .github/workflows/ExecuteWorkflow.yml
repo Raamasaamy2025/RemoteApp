@@ -58,11 +58,11 @@ jobs:
         run: |
           # Copying files to Target Repo
           # cd source-repo
-          git clone --branch RemoteApp https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo
-          cp -r source-repo/assets destination-repo/
-          # cp ./assets/entitlements/* destination-repo/assets/entitlements/
+          git clone --branch RemoteApp https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo1
+          cp -r source-repo/assets destination-repo1/
+          # cp ./assets/entitlements/* destination-repo1/assets/entitlements/
           
-          cd destination-repo
+          cd destination-repo1
           git add .
           if ! git diff --cached --quiet; then
             git commit -m "Copied specific files from source repo"
