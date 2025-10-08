@@ -50,7 +50,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: Raamasaamy2025/RemoteApp  # Replace with your source repo
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.TARGET_REPO_PAT }}
           path: source-repo
           ref: main
 
