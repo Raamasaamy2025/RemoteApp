@@ -40,7 +40,7 @@ jobs:
             else
               echo "No changes to commit"
             fi
-            git push origin RemoteApp
+            git push origin main
             echo "Directory removed."
             
           else
@@ -70,7 +70,7 @@ jobs:
           else
             echo "No changes to commit"
           fi
-          git push origin RemoteApp
+          git push origin main
 
       # - name: Trigger Fetch Provisioning Profiles Workflow
       #   id: trigger_workflow
