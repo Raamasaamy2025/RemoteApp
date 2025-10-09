@@ -28,7 +28,7 @@ jobs:
 
       - name: Clone destination repository and delte the assets folder, if already exists.
         run: |
-          git clone --branch RemoteApp https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo
+          git clone -b RemoteApp https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo
           #Remove the folder, if alreay exists.
           if [ -d destination-repo/assets ]; then
             cd destination-repo
@@ -58,7 +58,7 @@ jobs:
         run: |
           # Copying files to Target Repo
           # cd source-repo
-          git clone --branch RemoteApp https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo1
+          git clone -b RemoteApp https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo1
           cp -r source-repo/assets destination-repo1/
           # cp ./assets/entitlements/* destination-repo1/assets/entitlements/
           
