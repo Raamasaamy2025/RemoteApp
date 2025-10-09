@@ -29,6 +29,7 @@ jobs:
       - name: Clone destination repository and delte the assets folder, if already exists.
         run: |
           # git clone --branch RemoteApp https://x-access-token:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo
+          git remote add origin https://github.com/Raamasaamy2025/EasyServiceApp.git
           git clone --branch RemoteApp https://Raamasaamy2025:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo
           #Remove the folder, if alreay exists.
           if [ -d destination-repo/assets ]; then
