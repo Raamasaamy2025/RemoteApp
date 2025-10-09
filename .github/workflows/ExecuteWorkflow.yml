@@ -60,10 +60,10 @@ jobs:
           # Copying files to Target Repo
           # cd source-repo
           # git clone https://Raamasaamy2025:${{ secrets.TARGET_REPO_PAT }}@github.com/Raamasaamy2025/TestPipe.git destination-repo1
-          cp -r source-repo/assets destination-repo1/
-          # cp ./assets/entitlements/* destination-repo1/assets/entitlements/
+          cp -r source-repo/assets destination-repo/
+          # cp ./assets/entitlements/* destination-repo/assets/entitlements/
           
-          cd destination-repo1
+          cd destination-repo
           git add .
           if ! git diff --cached --quiet; then
             git commit -m "Copied specific files from source repo"
