@@ -109,7 +109,7 @@ jobs:
                 "main_entitlements_plist_path": "'"./assets/entitlements/entitlements.plist"'",
                 "output_ipa_path": "'"./output"'",
                 "extension_entitlements_plist_dir": "'"./assets/entitlements/extensions"'",
-                "extension_bundleids_list_commasep": "'"com.bosch.rbllc2test"'",
+                "extension_bundleids_list_commasep": "'"com.bosch.rbllc2test.NotificationService"'",
                 "version_no": "'"1.14.0"'"
               }
             }' \
