@@ -110,7 +110,8 @@ jobs:
                 "output_ipa_path": "'"./output"'",
                 "extension_entitlements_plist_dir": "'"./assets/entitlements/extensions"'",
                 "extension_bundleids_list_commasep": "'"com.bosch.rbllc2test.NotificationService"'",
-                "version_no": "'"1.14.0"'"
+                "version_no": "'"1.14.0"'",
+                "auto_upload_resignedipa_file": "'"NO"'"
               }
             }' \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/actions/workflows/$WORKFLOW_ID/dispatches"
